@@ -1,0 +1,876 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
+@import url(https://fonts.googleapis.com/css?family=Slabo+13px);
+
+$mt-brown: #342f28;
+$mt-gold: #d1af66;
+$mt-cream: #eee6d4;
+$main-font: 'Open Sans', sans-serif;
+$serif-font: 'Slabo 13px', serif;
+$mt-drkfont-color: #645d53;
+$mt-texture: url(../images/texture.png);
+
+*{margin:0px;}
+
+body, html {
+  font-family: $main-font;
+  -moz-osx-font-smoothing:grayscale; 
+  width: 100%;
+  height:100%;
+}
+
+.navbar {
+  top:0px;
+  width: 100%;
+  height: 60px;
+  background: $mt-brown;
+  position: fixed;
+  z-index:20;
+  section {
+    width: 90%;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .logo {
+	@include single-transition(all, 0.4s);
+    position: relative;
+    width: 150px;
+    height: auto;
+    display: block;
+    float: left;
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+    }
+  }
+  
+  ul {
+    float: right;
+    li {
+      display: inline-block;
+      padding: 0 30px;
+      line-height: 60px;
+      color: $mt-gold;
+    }
+  }
+}
+
+.tertiary-cta {
+  padding: 3px 12px;
+  border: 2px solid $mt-gold;
+  color: $mt-cream;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.menu-trigger a {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 25px;
+  top: 7px;
+  text-indent: -9999em;
+}
+
+.menu-trigger a span,
+.menu-trigger a span:before,
+.menu-trigger a span:after {
+  @include single-transition(all, 0.4s);
+  background-color: $mt-cream;
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 4px;
+  left: 0;
+}
+
+.menu-trigger a span:before,
+.menu-trigger a span:after {
+  content: "";
+}
+
+.menu-trigger a span {
+  top: 10px;
+}
+
+.menu-trigger a span:before {
+  @include transform-origin(33%, 100%);
+  top: -10px;
+  z-index: 10;
+}
+
+.menu-trigger a span:after {
+  @include transform-origin(33%, 0);
+  top: 10px;
+}
+
+.menu-trigger.active a span,
+.menu-trigger.active a span:before,
+.menu-trigger.active a span:after {
+  background-color: transparent;
+}
+
+.menu-trigger.active a span:before {
+  @include transform(translateY(5px) translateX(1px) rotate(45deg));
+  background-color: white;
+}
+
+.menu-trigger.active a span:after {
+  @include transform(translateY(-5px) translateX(1px) rotate(-45deg));
+  background-color: white;
+}
+.main-content{
+	width:100%;
+	height:100%;
+}
+.main-content img {
+    height: auto;
+    width: 100%;
+}
+
+.navbar a.tiny{
+   width:110px;	
+   }
+
+/*------------     navigation CSS     ------------ */
+.left .type-wrapper {
+    left: 18%;
+    position: absolute;
+    top: 35%;
+    width: 65%;
+}
+
+.left .type-wrapper h2, 
+.left .type-wrapper h4, 
+.left .type-wrapper span{
+	opacity:0;
+	@include transition(all, 0.8s);
+}
+
+.left .type-wrapper.active h2,
+.left .type-wrapper.active h4,
+.left .type-wrapper.active span{
+	opacity:1;
+	margin-top:-15px;
+}
+
+.type-wrapper h2{
+	color: $mt-brown;
+	font-family: $main-font;
+	font-weight:800;
+	font-size:70px;
+}
+
+.type-wrapper.active h2{
+	@include transition-delay(.25s)
+}
+
+.type-wrapper.active h4{
+	@include transition-delay(.75s)
+}
+
+.type-wrapper.active span{
+	@include transition-delay(1.25s)
+}
+
+.type-wrapper h4{
+	color: $mt-cream;
+	font-family: $serif-font;
+    font-size: 38px;
+    font-style: italic;
+    font-weight: 800;
+	margin-bottom:20px;
+	padding-top:15px;
+}
+
+.type-wrapper span{
+	color: $mt-drkfont-color;
+	font-family: $serif-font;
+	font-weight:200;
+	font-size:15px;
+}
+
+.nav-contents {
+    height: inherit;
+    position: fixed;
+    top: 60px;
+    width: 100%;
+	z-index:-5;
+	@include transition-delay(1s)
+}
+
+.nav-contents.active{
+	z-index:11;
+	@include transition-delay(0s)
+}
+
+.nav-contents .right{
+	background: $mt-cream $mt-texture repeat;
+	width:34%;
+	height:100%;
+	position:absolute;
+	right:-34%;
+	@include single-transition(all, 0.4s);
+
+}
+.nav-contents.active .right{
+	right:0px;
+    @include single-transition(all, 0.4s);
+}
+
+.nav-contents .left{
+	background-color: $mt-gold;
+	width:66%;
+	height:100%;
+	position:absolute;
+	left:-66%;
+	@include single-transition(all, 0.4s);
+	background-image: url(../images/crest-angle.png);
+	background-position:bottom right;
+	background-repeat:no-repeat;
+}
+
+.nav-contents.active .left{
+	@include single-transition(all, 0.4s);
+	left:0px;
+}
+
+.nav-contents .right li {
+	color:$mt-drkfont-color;
+	font-family: $main-font;
+    font-weight: 600;
+    line-height: 1.5em;
+    list-style: outside none none;
+    margin: 0 -50% 0.25em auto;
+    text-align: center;
+    text-transform: uppercase;
+	width: 50%;
+	@include transition(all, 0.4s);
+}
+
+.nav-contents .right ul {
+    margin: 46% auto;
+    padding: 0;
+    width: 100%;
+}
+.nav-contents .right li img{
+	width:100%;
+}
+
+.right .sub-link{
+	padding-top:40px;
+}
+
+.right .sub-link a{
+	font-size:13px;
+	color: $mt-drkfont-color;
+	text-decoration:none;
+	font-family: $main-font;
+	font-weight:500;
+	margin-right:5%;
+}
+
+.right .sub-link a:last-of-type{
+	margin-right:0px;
+}
+
+.nav-contents.active .right li{
+	margin-right:25%;
+	@include transition(all, .5s);
+}
+
+.nav-contents.active .right li:nth-child(1){
+	@include transition-delay(.15s)
+}
+
+.nav-contents.active .right li:nth-child(2){
+	@include transition-delay(.2s)
+}
+
+.nav-contents.active .right li:nth-child(3){
+	@include transition-delay(.25s)
+}
+
+.nav-contents.active .right li:nth-child(4){
+	@include transition-delay(.3s)
+}
+
+.nav-contents.active .right li:nth-child(5){
+	@include transition-delay(.35s)
+}
+
+.nav-contents.active .right li:nth-child(6){
+	@include transition-delay(.4s)
+}
+
+.nav-contents.active .right li:nth-child(7){
+	@include transition-delay(.45s)
+}
+
+.nav-contents.active .right li:nth-child(8){
+	@include transition-delay(.5s)
+}
+/*------------     Filter CSS     ------------ */
+
+.filter {
+    display: block;
+    height: 90px;
+    margin-top: -5px;
+    position: relative;
+    width: 100%;
+    z-index: 6;
+}
+
+.filter-side {
+    background-image: url("../images/filter-bar.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 100%;
+    max-height: 90px;
+}
+
+.filter-button {
+    background-image: url("../images/filter-btn.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 90px;
+    left: 50%;
+    margin-left: -100px;
+    max-width: 200px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 80%;
+    z-index: 6;
+}
+
+.filter-button a {
+    color: #eee6d4;
+    display: block;
+    font-weight: 800;
+    margin: 32px 0 0;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.filter-content {
+    background-color: $mt-brown;
+    border-bottom: 5px solid #000000;
+    max-height: 0;
+    overflow: hidden;
+    @include transition(all, ease, .7s);
+	text-align:center;
+}
+
+.filter-content.active{
+	max-height:800px;
+	@include transition(all, .5s);
+	padding-bottom: 50px;
+}
+
+.filter-content p, .filter-content a{
+	color:$mt-gold;
+}
+
+.filter-content p a{
+	text-decoration:none;
+	border-bottom:.5px $mt-gold solid;
+}
+
+.filter-button img{
+	width:25px;
+	vertical-align:top;
+	@include transform(rotate(-90deg));
+	@include transition(all, 0.2s);
+
+}
+
+.filter-button.active img{
+	@include transform(rotate(0deg));
+}
+.filter-form-wrap {
+    margin: 0 auto 100px 33%;
+    width: 50%;
+	height:250px;
+}
+.filter-form{
+	width:49%;
+	display:inline-block;
+	text-align:left;
+}
+
+a.sort img {
+    margin-bottom: 10px;
+    width: 145px;
+}
+
+.home form span{
+	color:#9f8150;
+	font-size:17px;
+}
+
+.home [type="checkbox"]:not(:checked) + label::before {
+    background: #4a4642 none repeat scroll 0 0;
+    height: 30px;
+    width: 30px;
+}
+
+.home [type="checkbox"]:not(:checked) + label::after, .home [type="checkbox"]:checked + label::after {
+    background-color: #4a4642;
+    font-size: 28px;
+    width: 23px;
+}
+
+.home form p{
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.home h5{
+	color: $mt-cream;
+	text-transform:uppercase;
+	font-size:24px;
+	margin:60px 0px 20px;
+	padding-left:10px;
+}
+
+
+.filter-form{
+	opacity:0;
+	margin-top:15px;
+	@include single-transition(all, 0.8s);
+}
+
+.active .filter-form{
+	opacity:1;
+	margin-top:0px;
+}
+
+.active .filter-form:last-of-type{
+	@include transition-delay(.3s);
+}
+
+.filter-form.last{
+	margin:0px;
+}
+
+.content-blocks{
+	position:relative;
+	background-color:#000000;
+	height:inherit;
+	background-image:url(../images/ajax-loader.gif);
+	background-position:center 200px;
+	background-repeat:no-repeat;
+}
+
+.content-blocks img{
+	opacity:0;
+	position:absolute;
+	@include transition(opacity, 0.6s);
+}
+
+.content-blocks img.active{
+	opacity:1;
+	@include transition-delay(1.75s);
+
+}
+/*------------     Popup CSS     ------------ */
+.pop-up-content{
+	top:60px;
+	position:absolute;
+	z-index:-5;
+	opacity:0;
+	@include transition(opacity, 0.6s);
+
+}
+
+.pop-up-content.active{
+	@include transition-delay(.35s);
+	opacity:1;
+	z-index:10;
+}
+
+.stick{
+	position:fixed;
+	top:60px !important;
+}
+
+/*------------     Video CSS     ------------ */
+.hero-type {
+    left: 10%;
+    position: absolute;
+    top: 215px;
+    width: 35%;
+    z-index: 5;
+}
+
+.hero-type div{
+	opacity:1;
+	transition:all ease .5s .75s;
+}
+
+.hero-type a {
+    display: inline-block;
+    opacity: 1;
+    position: absolute;
+    top: 260px;
+    transition: all 0.25s ease 1s;
+    vertical-align: top;
+    width: 49%;
+}
+
+.video-watch{
+	left:50%;
+}
+
+.vimeo-vid-wrapper {
+    background-color: #000000;
+    height: auto;
+    left: 50%;
+    margin-left: -50%;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+	opacity:0;
+	z-index:0;
+	transition:opacity ease .5s .5s, z-index ease 2s;
+	text-align:center;
+}
+.vimeo-vid-wrapper.active{
+	opacity:1;
+	z-index:5;
+	transition:opacity ease .5s .5s, z-index ease 0s 2s;
+}
+
+.vimeo-video {
+    height: 0;
+    padding-bottom: 43.5%;
+    padding-top: 0;
+    position: relative;
+    width: 78.02%;
+	display:inline-block;
+}
+
+.vimeo-video iframe{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.video-close {
+    background-color: #d1af66;
+    color: #342f28;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    width: 30px;
+	cursor:pointer;
+	transition:all ease .25s;
+}
+
+.active .video-close:hover{
+	color:#ffffff;
+	right:-34px;
+	transition:all ease .25s;
+}
+
+.active .video-close{
+    right: -30px;
+	transition:all ease .25s .75s;
+}
+
+.hero-type.active div{
+	opacity:0;
+	margin-top:-10px;
+    transition:all ease .25s;
+}
+
+.hero-type.active a{ 
+	opacity:0;
+	margin-top:-35px;
+    transition:all ease .25s .15s;
+}
+
+/*------------     Head Inspection     ------------ */
+
+.hi-inspection-content .counter {
+    height: auto;
+    margin: 0 auto;
+    padding-top: 10%;
+    position: relative;
+    width: 50%;
+	padding-bottom:75px;
+}
+
+.hi-inspection-content .counter p {
+    color: #b5a990;
+    font-family: open sans;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.hi-inspection-content .counter-bar-bg {
+    background-color: #e6d6b4;
+    height: 12px;
+    position: absolute;
+    width: 100%;
+}
+
+.hi-inspection-content .counter-bar {
+    background-color: #d1af66;
+    height: 12px;
+    position: absolute;
+    width: 66%;
+	transition:all ease .25s;
+}
+
+.hi-inspection-content .counter-bar.active{
+	width: 71%;
+}
+
+.hi-inspection-content .background-img {
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    bottom: -5%;
+    display: block;
+    height: 100%;
+    pointer-events: none;
+    position: fixed;
+    right: -5%;
+    width: 100%;
+	opacity:0;
+}
+
+.hi-inspection-content {
+    background-color: $mt-cream;
+	background-image: $mt-texture;
+    position: relative;
+    width: 100%;
+	height:100%;
+}
+
+.hi-question {
+    left: 50%;
+    margin: 0 auto 0 -24.5%;
+    max-width: 805px;
+    position: absolute;
+    transition: opacity 1s ease 0s;
+    width: 50%;
+	height:auto;
+	top: 260px;
+	z-index:0;
+}
+
+
+.hi-question h3{
+	color:#616449;
+	font-family:$main-font;
+	text-align:center;
+	margin:10px auto 20px;
+	font-size:28px; 
+	opacity:0;
+
+}
+.hi-question h3 + div{
+	max-width:400px;
+	text-align:center;
+	margin:10px auto 0px;
+	opacity:0;
+
+}
+
+.hi-question p{
+	font-family:$main-font;	
+	font-size:21px;
+	color: $mt-brown;
+	padding-top:20px;
+	opacity:0;
+	margin-top:10px;
+}
+
+.hi-question p, 
+.hi-question h3, 
+.hi-question h3 +div, 
+.hi-question .back, 
+.hi-question .background-img,
+.hi-question form{
+	transition:opacity ease .25s .25s, margin ease 0s 2s;
+}
+
+.hi-question.active p, 
+.hi-question.active h3, 
+.hi-question.active h3 +div, 
+.hi-question.active .back, 
+.hi-question.active form{
+	opacity:1;
+	transition:all ease .5s;
+}
+
+.hi-question.active p, 
+.hi-question.active h3, 
+.hi-question.active h3 +div{
+	margin-top:0px;
+	transition-delay:.75s;
+}
+
+.hi-question.active .back, 
+.hi-question.active form{
+	margin-top:0px;
+	transition-delay:1s;
+}
+
+.hi-question.active .background-img{
+	transition:all ease 1.25s;
+	transition-delay:1.25s;
+	opacity:1;
+}
+
+
+.hi-question.active{
+	z-index:10;
+}
+
+form div{
+	margin-bottom:20px;
+	font-size:20px;
+	color: $mt-drkfont-color;
+	padding-top:0px !important;
+}
+
+form span {
+    color: #645d53;
+    display: inline-block;
+    font-family: "Open Sans",sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    padding-left: 10px;
+    vertical-align: top;
+    width: 91%;
+}
+
+.hi-question form{
+	padding-top:60px;
+	opacity:0;
+	margin-top:10px
+}
+
+.hi-question .back img {
+    vertical-align: middle;
+    width: 75px;
+}
+
+
+.hi-question .back{
+	text-align:center;
+	padding-top:30px;
+	opacity:0;
+	margin-top:10px;
+}
+
+.hi-question .back a{
+	color: #b1a181;
+	font-family:$main-font;
+	font-weight:800;
+	text-decoration:none;
+}
+
+#hi-question-5 .background-img{
+	background-image:url(../images/dinner-plate.png);
+}
+
+#hi-question-6 .background-img{
+	background-image:url(../images/sleepy-lady.png);
+}
+
+
+/*------------     Custom Checkboxes     ------------ */
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label, [type="checkbox"]:checked + label {
+    color: $mt-drkfont-color;
+    cursor: pointer;
+    font-weight: 700;
+    padding-left: 42px;
+    padding-top: 4px;
+    position: relative;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label::before {
+    background: #d7ccb4 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    content: "";
+    height: 33px;
+    left: 0;
+    position: absolute;
+    top: 2px;
+    width: 33px;
+}
+[type="checkbox"]:checked{
+  background: #ffffff;
+}
+
+label{
+	font-size:20px;
+}
+
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label::after, [type="checkbox"]:checked + label::after {
+    background-color: #fff;
+    color: #d1af66;
+    content: url("../images/check.png");
+    font-size: 35px;
+    left: 0;
+    line-height: 0.8;
+	padding: 2px 4px 6px 3px;
+    position: absolute;
+    top: 1px;
+    transition: all 0.2s ease 0s;
+    width: 26px;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #ffffff inset!important;
+}
